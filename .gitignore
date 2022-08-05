@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Locks
+package-lock.json
+pnpm-lock.json
