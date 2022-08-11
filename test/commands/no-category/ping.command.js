@@ -1,6 +1,6 @@
-const { InteractionCommand, InteractionContext } = require('../../dist/index.js')
+const { BaseCommand, InteractionContext } = require('../../../dist')
 
-module.exports = class extends InteractionCommand {
+module.exports = class extends BaseCommand {
 	name = 'ping'
 	description = 'Pong!'
 

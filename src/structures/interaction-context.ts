@@ -1,4 +1,5 @@
 import { CommandInteraction, Member } from '@biscuitland/core'
+
 import { Fortune } from '../fortune'
 
 export class InteractionContext {

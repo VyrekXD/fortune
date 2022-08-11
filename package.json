@@ -10,7 +10,7 @@
 	"scripts": {
 		"build": "tsup",
 		"dev": "tsup --watch",
-		"test": "nodemon --watch src --watch test --exec \"pnpm run build && node ./test/index.js\" --ext ts,js"
+		"test": "nodemon --watch test/ --watch src/ --ext js --exec \"pnpm run build && node test/index.js\""
 	},
 	"exports": {
 		"./package.json": "./package.json",
@@ -25,7 +25,8 @@
 	"dependencies": {
 		"@biscuitland/api-types": "^1.2.0",
 		"@biscuitland/core": "^1.2.0",
-		"dotenv": "^16.0.1"
+		"dotenv": "^16.0.1",
+		"tslib": "^2.4.0"
 	},
 	"devDependencies": {
 		"@swc/core": "^1.2.223",
@@ -56,3 +57,4 @@
 		"access": "public"
 	}
 }
+

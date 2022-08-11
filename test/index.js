@@ -1,7 +1,6 @@
 const { config } = require('dotenv')
 const { join } = require('path')
-
-const { Fortune } = require('../dist/index.js')
+const { Fortune } = require('../dist/index')
 
 config()
 
@@ -12,11 +11,10 @@ bot.events.on('ready', () => {
 })
 
 async function main() {
-	await bot.addInteractionCommandsIn(join(__dirname, 'commands'))
+	await bot.loadCommandsIn(join(__dirname, 'commands'))
 
 	await bot.start()
 	console.log('Started')
 }
 
 main()
-

@@ -17,7 +17,9 @@
 		"useUnknownInCatchVariables": false,
 		"allowUnreachableCode": false,
 		"outDir": "dist",
-		"rootDir": "src"
+		"rootDir": "src",
+		//delete types/node
+		"types": ["node"]
 	},
 	"include": ["./src/**/*"]
 }

@@ -1,52 +1,65 @@
 import { PickOptions, Session } from '@biscuitland/core'
 import { readdir } from 'fs/promises'
 import { join } from 'path'
-import { inspect } from 'util'
-import { inCommonJs } from './constants'
 
-import { InteractionCommand, InteractionContext } from './structures'
+import { inCommonJs } from './constants'
+import { EventsHandler } from './handlers'
+import { BaseCommand, Category } from './structures'
 
 export class Fortune extends Session {
-	interactionCommands: Set<InteractionCommand>
+	categoryCommands: Category[]
+	interactionCommands: BaseCommand[]
 
 	constructor(options: PickOptions) {
 		super(options)
 
-		this.interactionCommands = new Set()
+		this.categoryCommands = []
+		this.interactionCommands = []
+
+		new EventsHandler(this)
 	}
 
-	override async start() {
-		this.events.on('interactionCreate', async (interaction) => {
-			if (!interaction.isCommand()) return
-
-			const Command = Array.from(this.interactionCommands.values()).find(
-				(x) => x.name === interaction.commandName
-			)
-			if (!Command) return
-			if (!Command.run) return
-
-			const options: Record<string, any> = {}
-			interaction.options.hoistedOptions.forEach((option) => {
-				options[option.name] = option.value
-			})
-
-			await Command.run(new InteractionContext(this, interaction), options)
-		})
-
-		super.start()
-	}
-
-	async addInteractionCommandsIn(dir: string) {
+	async loadCommandsIn(dir: string) {
 		const files = await this._getFiles(dir)
 
 		for (const file of files) {
-			const imp = inCommonJs ? require(file) : (await new Function(`return import(file://${file})`)()).default
+			const imp = inCommonJs ? require(file) : (await new Function(`return import(\`file://${file}\`)`)()).default
+			if (!imp) continue
+			if (!imp.category) continue
+
+			const module: Category = new imp()
+			if (!module.importIn && !module.imported.length)
+				throw new Error(`Category "${module.name}" must have either "in" or "import" property`)
+
+			const commands: BaseCommand[] = module.importIn
+				? module.imported
+					? [...(await this.loadCategory(module.importIn)), ...module.imported]
+					: await this.loadCategory(module.importIn)
+				: module.imported
+
+			module.imported.push(...commands)
+
+			this.interactionCommands.push(...commands)
+			this.categoryCommands.push(module)
+		}
+	}
+
+	private async loadCategory(dir: string) {
+		const files = await this._getFiles(dir)
+		const imported: BaseCommand[] = []
+
+		for (const file of files) {
+			const imp = inCommonJs ? require(file) : (await new Function(`return import(\`file://${file}\`)`)()).default
 			if (!imp) continue
 
-			const command: InteractionCommand = new imp()
+			const cmd: BaseCommand = new imp()
+			if (!(cmd instanceof BaseCommand))
+				throw new Error(`A command in a category doesnt is an instance of BaseCommand`)
 
-			this.interactionCommands.add(command)
+			imported.push(cmd)
 		}
+
+		return imported
 	}
 
 	private async _getFiles(dir: string): Promise<string[]> {
