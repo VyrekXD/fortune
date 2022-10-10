@@ -1,5 +1,5 @@
 {
-	"name": "fortune",
+	"name": "fortunelib",
 	"version": "1.0.0",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -13,6 +13,7 @@
 		"@biscuitland/api-types": "^1.2.0",
 		"@biscuitland/core": "^1.2.0",
 		"dotenv": "^16.0.1",
+		"fortunelib": "link:",
 		"tslib": "^2.4.0"
 	},
 	"devDependencies": {
@@ -43,4 +44,3 @@
 		"access": "public"
 	}
 }
-

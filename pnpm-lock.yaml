@@ -6,6 +6,7 @@ specifiers:
   '@swc/core': ^1.2.223
   '@types/node': ^18.6.4
   dotenv: ^16.0.1
+  fortunelib: 'link:'
   tslib: ^2.4.0
   typescript: ^4.7.4
 
@@ -13,6 +14,7 @@ dependencies:
   '@biscuitland/api-types': 1.2.0
   '@biscuitland/core': 1.2.0
   dotenv: 16.0.1
+  fortunelib: 'link:'
   tslib: 2.4.0
 
 devDependencies:
