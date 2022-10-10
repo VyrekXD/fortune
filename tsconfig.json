@@ -11,13 +11,15 @@
 		"noImplicitOverride": true,
 		// "noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"strict": true,
+		// "strict": true,
 		"stripInternal": true,
 		"noFallthroughCasesInSwitch": true,
 		"useUnknownInCatchVariables": false,
 		"allowUnreachableCode": false,
 		"outDir": "dist",
 		"rootDir": "src",
+		"sourceMap": true,
+		"declaration": true,
 		//delete types/node
 		"types": ["node"]
 	},
