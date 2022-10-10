@@ -1,6 +1,7 @@
 {
 	"name": "@fortuneland/core",
-	"version": "1.0.0",
+	"description": "A library that wraps biscuit in a more dev-friendly enviroment without taking to much performance",
+	"version": "1.0.1",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"files": [
