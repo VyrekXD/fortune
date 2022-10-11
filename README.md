@@ -30,7 +30,7 @@ _Happy coding with fortune :D_
 
 ## Example
 
-**Docs coming soon**
+> **Docs coming soon**
 
 Your files need to be something like this
 
