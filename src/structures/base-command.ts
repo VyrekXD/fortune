@@ -63,9 +63,9 @@ export interface BaseCommandData {
 	description: string
 	descriptionLocalizations?: Partial<Record<Locales, string>>
 
-	guildIds: string[]
+	guildIds?: string[]
 
-	options: CommandOption[]
+	options?: CommandOption[]
 }
 
 export class BaseCommand {
