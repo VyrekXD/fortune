@@ -1,58 +1,57 @@
 {
-	"name": "@fortuneland/core",
-	"description": "A library that wraps biscuit in a more dev-friendly enviroment without compromising too much performance",
-	"version": "1.0.1",
-	"main": "./lib/index.js",
-	"types": "./dts/index.d.ts",
-	"files": [
-		"dts/**/*.d.ts",
-		"lib/**/*.{js,map}",
-		"src/**/*.{ts,tsx,json}"
-	],
-	"scripts": {
-		"build": "packemon build",
-		"pack": "packemon pack --addEngines --addFiles --declaration",
-		"deploy": "pnpm run pack && pnpm publish"
-	},
-	"dependencies": {
-		"@biscuitland/core": "^1.2.0"
-	},
-	"devDependencies": {
-		"@biscuitland/api-types": "^1.2.0",
-		"@types/node": "^18.8.4",
-		"packemon": "^2.4.1",
-		"typescript": "4.9.0-dev.20221007"
-	},
-	"license": "Apache-2.0",
-	"author": "Vyrek",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/VyrekXD/fortune.git"
-	},
-	"bugs": {
-		"url": "https://github.com/VyrekXD/fortune/issues"
-	},
-	"keywords": [
-		"api",
-		"discord",
-		"bots",
-		"typescript",
-		"botdev",
-		"biscuit",
-		"biscuitland",
-		"biscuitland/fortune"
-	],
-	"publishConfig": {
-		"access": "public"
-	},
-	"packemon": {
-		"format": "lib",
-		"platform": "node",
-		"support": "experimental"
-	},
-	"engines": {
-		"node": ">=18.0.0",
-		"npm": ">=8.5.0"
-	}
+  "name": "@fortuneland/core",
+  "description": "A library that wraps biscuit in a more dev-friendly enviroment without compromising too much performance",
+  "version": "1.0.1",
+  "main": "./lib/index.js",
+  "types": "./dts/index.d.ts",
+  "files": [
+    "dts/**/*.d.ts",
+    "lib/**/*.{js,map}",
+    "src/**/*.{ts,tsx,json}"
+  ],
+  "scripts": {
+    "build": "packemon build",
+    "pack": "packemon pack --addEngines --addFiles --declaration",
+    "deploy": "pnpm run pack && pnpm publish"
+  },
+  "dependencies": {
+    "@biscuitland/core": "^1.2.0"
+  },
+  "devDependencies": {
+    "@biscuitland/api-types": "^1.2.0",
+    "@types/node": "^18.8.4",
+    "packemon": "^2.4.1",
+    "typescript": "4.9.0-dev.20221007"
+  },
+  "license": "Apache-2.0",
+  "author": "Vyrek",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VyrekXD/fortune.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VyrekXD/fortune/issues"
+  },
+  "keywords": [
+    "api",
+    "discord",
+    "bots",
+    "typescript",
+    "botdev",
+    "biscuit",
+    "biscuitland",
+    "biscuitland/fortune"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "packemon": {
+    "format": "lib",
+    "platform": "node",
+    "support": "experimental"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.5.0"
+  }
 }
-
