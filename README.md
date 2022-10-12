@@ -55,7 +55,7 @@ import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const session = new Session({ token: 'your token', intents: GatewayIntents.Guilds })
 
-function main() {
+async function main() {
 	await session.loadCommands(join(__dirname, '.', 'commands'))
 	await session.loadEvents(join(__dirname, '.', 'events'))
 	await session.start()
