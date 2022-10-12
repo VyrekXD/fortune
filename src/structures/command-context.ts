@@ -29,11 +29,11 @@ export class CommandContext {
 	}
 
 	async deferThink() {
-		await this.interaction.defer()
+		await this.interaction.respond({ type: InteractionResponseTypes.DeferredChannelMessageWithSource })
 	}
 
 	async defer() {
-		await this.interaction.respond({ type: InteractionResponseTypes.DeferredUpdateMessage })
+		await this.interaction.defer()
 	}
 
 	editOrRespond(data: InteractionApplicationCommandCallbackData): Promise<undefined | Message> {
