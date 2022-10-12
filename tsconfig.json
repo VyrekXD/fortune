@@ -5,7 +5,6 @@
 		"emitDecoratorMetadata": true,
 		"rootDir": "./src",
 		"moduleResolution": "NodeNext",
-		"typeRoots": ["./dts/", "./node_modules/@types"],
 		"module": "NodeNext",
 		"declaration": true,
 		"sourceMap": true,

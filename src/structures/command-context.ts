@@ -3,6 +3,10 @@ import { CommandInteraction, InteractionApplicationCommandCallbackData, Member, 
 
 import { Session } from './index.js'
 
+interface DeferOptions {
+	ephemeral?: boolean
+}
+
 export class CommandContext {
 	channelId?: string
 	guildId?: string
@@ -29,7 +33,7 @@ export class CommandContext {
 	}
 
 	async defer() {
-		await this.interaction.defer()
+		await this.interaction.respond({ type: InteractionResponseTypes.DeferredUpdateMessage })
 	}
 
 	editOrRespond(data: InteractionApplicationCommandCallbackData): Promise<undefined | Message> {

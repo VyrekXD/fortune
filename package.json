@@ -1,17 +1,13 @@
 {
 	"name": "@fortuneland/core",
 	"description": "A library that wraps biscuit in a more dev-friendly enviroment without compromising too much performance",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"main": "./lib/index.js",
 	"types": "./dts/index.d.ts",
-	"files": [
-		"dts/**/*.d.ts",
-		"lib/**/*.{js,map}",
-		"src/**/*.{ts,tsx,json}"
-	],
 	"scripts": {
 		"build": "packemon build",
-		"pack": "packemon pack --addEngines --addFiles --declaration"
+		"pack": "packemon pack --addEngines --declaration",
+		"prepare": "packemon pack --addEngines --declaration"
 	},
 	"dependencies": {
 		"@biscuitland/core": "^1.2.0"
@@ -52,6 +48,11 @@
 	"engines": {
 		"node": ">=18.0.0",
 		"npm": ">=8.5.0"
-	}
+	},
+	"files": [
+		"dts/**/*.d.ts",
+		"lib/**/*.{js,map}",
+		"src/**/*.{ts,tsx,json}"
+	]
 }
 
