@@ -33,7 +33,7 @@ export class CommandContext {
 	}
 
 	async defer() {
-		await this.interaction.respond({ type: InteractionResponseTypes.DeferredUpdateMessage })
+		await this.interaction.defer()
 	}
 
 	editOrRespond(data: InteractionApplicationCommandCallbackData): Promise<undefined | Message> {
