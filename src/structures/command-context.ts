@@ -29,16 +29,16 @@ export class CommandContext {
 	}
 
 	async deferThink() {
-		await this.interaction.respond({ type: InteractionResponseTypes.DeferredChannelMessageWithSource })
+		await this.interaction.defer()
 	}
 
 	async defer() {
-		await this.interaction.defer()
+		await this.interaction.respond({ type: InteractionResponseTypes.DeferredUpdateMessage })
 	}
 
 	editOrRespond(data: InteractionApplicationCommandCallbackData): Promise<undefined | Message> {
 		if (this.interaction.responded) return this.interaction.editReply(data)
-		return this.interaction.respond({ with: data })
+		return this.interaction.respond({ type: InteractionResponseTypes.ChannelMessageWithSource, data })
 	}
 
 	get createdTimestamp(): number {
