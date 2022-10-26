@@ -1,11 +1,14 @@
 import { InteractionResponseTypes } from '@biscuitland/api-types'
-import { CommandInteraction, InteractionApplicationCommandCallbackData, Member, Message, User } from '@biscuitland/core'
+import {
+	CommandInteraction,
+	EditWebhookMessage,
+	InteractionResponseWithData,
+	Member,
+	Message,
+	User
+} from '@biscuitland/core'
 
 import { Session } from './index.js'
-
-interface DeferOptions {
-	ephemeral?: boolean
-}
 
 export class CommandContext {
 	channelId?: string
@@ -36,9 +39,8 @@ export class CommandContext {
 		await this.interaction.defer()
 	}
 
-	editOrRespond(data: InteractionApplicationCommandCallbackData): Promise<undefined | Message> {
-		if (this.interaction.responded) return this.interaction.editReply(data)
-		return this.interaction.respond({ type: InteractionResponseTypes.ChannelMessageWithSource, data })
+	editOrReply(data: InteractionResponseWithData & EditWebhookMessage): Promise<Message> {
+		return this.interaction.editOrReply(data)
 	}
 
 	get createdTimestamp(): number {
